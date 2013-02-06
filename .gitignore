@@ -2,3 +2,4 @@
 /Resources/MainMenu.cib
 
 *.pyc
+/ClassifierSandbox2/projects.sqlite3

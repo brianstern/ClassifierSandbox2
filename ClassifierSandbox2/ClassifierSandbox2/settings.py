@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'rest_framework',
     'ClassifierSandbox2',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',

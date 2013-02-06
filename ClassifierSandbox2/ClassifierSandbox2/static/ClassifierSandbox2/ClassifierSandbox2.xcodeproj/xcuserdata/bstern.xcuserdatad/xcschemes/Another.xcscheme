@@ -17,7 +17,7 @@
                BlueprintIdentifier = "9EEC4492135749D200615446"
                BuildableName = "Another.app"
                BlueprintName = "Another"
-               ReferencedContainer = "container:ClassifierSandbox.xcodeproj">
+               ReferencedContainer = "container:ClassifierSandbox2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "9EEC4492135749D200615446"
             BuildableName = "Another.app"
             BlueprintName = "Another"
-            ReferencedContainer = "container:ClassifierSandbox.xcodeproj">
+            ReferencedContainer = "container:ClassifierSandbox2.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -54,7 +54,7 @@
             BlueprintIdentifier = "9EEC4492135749D200615446"
             BuildableName = "Another.app"
             BlueprintName = "Another"
-            ReferencedContainer = "container:ClassifierSandbox.xcodeproj">
+            ReferencedContainer = "container:ClassifierSandbox2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,7 +72,7 @@
             BlueprintIdentifier = "9EEC4492135749D200615446"
             BuildableName = "Another.app"
             BlueprintName = "Another"
-            ReferencedContainer = "container:ClassifierSandbox.xcodeproj">
+            ReferencedContainer = "container:ClassifierSandbox2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1,8 +1,8 @@
 /*
  * AppController.j
- * ClassifierSandbox
+ * ClassifierSandbox2
  *
- * Created by You on January 19, 2013.
+ * Created by You on February 5, 2013.
  * Copyright 2013, Your Company All rights reserved.
  */
 
