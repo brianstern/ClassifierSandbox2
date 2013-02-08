@@ -13,15 +13,12 @@
 @implementation AppController : CPObject
 {
     CPWindow    theWindow; //this "outlet" is connected automatically by the Cib
-    @outlet     CPObject    collectionController;
-    @outlet     CPObject    testImageView;
+    @outlet     CPCollectionView    collectionController;
 }
 
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
     // This is called when the application is done loading.
-    
-    //[collectionController loadGlyphs];
 }
 
 - (void)awakeFromCib
@@ -39,55 +36,37 @@
 
 - (void)loadGlyphs
 {
+    // Retrieve base64 glyph data
     var glyphTokens = encodedGlyphs.split(",");
-    
     var glyph64List = [];
-    var i;
-    var glyphLimit = 10;
-    if (glyphTokens.length < 10) {
-        glyphLimit = glyphTokens.length;
-    }
-    for (i = 0; i < glyphLimit; i++) {
+    var glyphLimit = glyphTokens.length;
+    for (var i = 0; i < glyphLimit; i++) {
         var partGlyphs = glyphTokens[i].split("&#39;");
         glyph64List[i] = partGlyphs[1];
     }
     
     var itemList = [];
     
+    //Prepare CPCollectionView
+    [collectionController setAutoresizingMask:CPViewWidthSizable];
+    [collectionController setMinItemSize:CGSizeMake(100, 100)];
+    [collectionController setMaxItemSize:CGSizeMake(100, 100)];
+    [collectionController setDelegate:self];
+    
+    //Set CPCollectionView to use PhotoViews
     var itemPrototype = [[CPCollectionViewItem alloc] init];
-    var photoView = [[PhotoView alloc] initWithFrame:CGRectMakeZero()];
-    
-    [itemPrototype setView:photoView];
-    
+    [itemPrototype setView:[[PhotoView alloc] initWithFrame:CGRectMakeZero()]];
     [collectionController setItemPrototype:itemPrototype];
     
-    
-    
-    for (i = 0; i < glyph64List.length; i++) {
+    //Create CPImages with the base64 data
+    for (var i = 0; i < glyph64List.length; i++) {
         var glyphImageData = [CPData dataWithBase64:glyph64List[i]];
         var glyphImage = [[CPImage alloc] initWithData:glyphImageData];
         itemList[i] = glyphImage;
     }
     
-    [collectionController setContent:[[[CPImage alloc] initWithData:glyphImageData]]];
-    
-    /*
-    for (i = 0; i < glyph64List.length; i++) {
-        var glyphImageData = [CPData dataWithBase64:glyph64List[i]];
-        var glyphImage = [[CPImage alloc] initWithData:glyphImageData];
-        
-        //itemList[i] = {"id": i, "CPImage": glyphImage};
-        
-        var glyphImageView = [CPImageView initialize];
-        [glyphImageView setImage:glyphImage];
-        itemList[i] = [CPCollectionViewItem initialize];
-        [itemList[i] setRepresentedObject:glyphImageView];
-    }
-    */
-    var glyphImageData = [CPData dataWithBase64:glyph64List[0]];
-    var glyphImage = [[CPImage alloc] initWithData:glyphImageData];
-    [testImageView setImage:glyphImage];
-    //[collectionController setContent:itemList];
+    //Add images to CPCollectionView
+    [collectionController setContent:itemList];
 }
 
 @end
@@ -121,38 +100,3 @@
 }
 
 @end
-
-/*
-@implementation CollectionController : CPObject
-{
-    @outlet     CPObjectController      collectionObjectController;
-    @outlet     CPCollectionView        cView;
-}
-
-- (void)loadGlyphs
-{
-    var glyphTokens = encodedGlyphs.split(",");
-    
-    var glyph64List = [];
-    var i;
-    var glyphLimit = 10;
-    if (glyphTokens.length < 10) {
-        glyphLimit = glyphTokens.length;
-    }
-    for (i = 0; i < glyphLimit; i++) {
-        var partGlyphs = glyphTokens[i].split("&#39;");
-        glyph64List[i] = partGlyphs[1];
-    }
-    
-    var itemList = [];
-    for (i = 0; i < glyph64List.length; i++) {
-        var glyphImageData = [CPData dataWithBase64:glyph64List[i]];
-        var glyphImage = [[CPImage alloc] initWithData:glyphImageData];
-        itemList[i] = [CPCollectionViewItem initialize];
-        [itemList[i] setRepresentedObject:glyphImage];
-    }
-    
-    [cView addObjects:itemList];
-}
-
-@end*/
