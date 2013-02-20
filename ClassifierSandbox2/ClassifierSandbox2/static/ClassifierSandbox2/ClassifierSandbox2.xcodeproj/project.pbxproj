@@ -10,11 +10,25 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
+		<key>063340D0AD00DB9B96C7E2F2</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>_Users_bstern_Documents_code_ClassifierSandbox2_ClassifierSandbox2_ClassifierSandbox2_static_ClassifierSandbox2_GlyphView.h</string>
+			<key>path</key>
+			<string>.XcodeSupport/_Users_bstern_Documents_code_ClassifierSandbox2_ClassifierSandbox2_ClassifierSandbox2_static_ClassifierSandbox2_GlyphView.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
 		<key>1A894868B150D362F0ABCBAD</key>
 		<dict>
 			<key>children</key>
 			<array>
 				<string>6D344C88A128558CABA9004E</string>
+				<string>849A47D88EA21CAC990CCCDC</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -30,6 +44,8 @@
 				<string>B0764E15A8A407A16DF21993</string>
 				<string>42D94ADA8D3062705F1B19EB</string>
 				<string>7B6E4CAFAA1C42209EEDF787</string>
+				<string>063340D0AD00DB9B96C7E2F2</string>
+				<string>6D0742028CD268EEFAC6D9A3</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -58,6 +74,19 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>6D0742028CD268EEFAC6D9A3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>_Users_bstern_Documents_code_ClassifierSandbox2_ClassifierSandbox2_ClassifierSandbox2_static_ClassifierSandbox2_GlyphView.m</string>
+			<key>path</key>
+			<string>.XcodeSupport/_Users_bstern_Documents_code_ClassifierSandbox2_ClassifierSandbox2_ClassifierSandbox2_static_ClassifierSandbox2_GlyphView.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
 		<key>6D344C88A128558CABA9004E</key>
 		<dict>
 			<key>isa</key>
@@ -81,6 +110,19 @@
 			<string>_Users_bstern_Documents_code_ClassifierSandbox2_ClassifierSandbox2_ClassifierSandbox2_static_ClassifierSandbox2_AppController.m</string>
 			<key>path</key>
 			<string>.XcodeSupport/_Users_bstern_Documents_code_ClassifierSandbox2_ClassifierSandbox2_ClassifierSandbox2_static_ClassifierSandbox2_AppController.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>849A47D88EA21CAC990CCCDC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>?</string>
+			<key>name</key>
+			<string>GlyphView.j</string>
+			<key>path</key>
+			<string>GlyphView.j</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
@@ -155,6 +197,7 @@
 			<key>files</key>
 			<array>
 				<string>6C80486191A619B8998D4CDF</string>
+				<string>BA3C4FFC8DC3BCFF17F3437F</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
@@ -492,6 +535,13 @@
 			<string>.XcodeSupport/xcc_general_include.h</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>BA3C4FFC8DC3BCFF17F3437F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6D0742028CD268EEFAC6D9A3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

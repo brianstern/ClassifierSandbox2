@@ -8,62 +8,60 @@
 
 @import <Foundation/CPObject.j>
 @import <Ratatosk/Ratatosk.j>
-@import "GlyphView.j"
-
 
 PhotoDragType = "PhotoDragType";
 
-@implementation GlyphView : CPObject
+@implementation GlyphViewController : CPObject
 {
     CPArray     itemList;
-    @outlet     CPCollectionView    collectionController;
+    @outlet     CPCollectionView    glyphView;
+    @outlet     CPImageView         testCell;
 }
 
-- (id)init
+- (id)initWithCollectionView:(CPCollectionView)collectionView
 {
     self = [super init];
-    console.log("HMM");
     if (self)
     {
-        [self loadGlyphs];
-        console.log("WHU");
-    }
-}
+        glyphView = collectionView;
+        // Retrieve base64 glyph data
+        var glyphTokens = encodedGlyphs.split(",");
+        var glyph64List = [];
+        var glyphLimit = glyphTokens.length;
+        for (var i = 0; i < glyphLimit; i++)
+        {
+            var partGlyphs = glyphTokens[i].split("&#39;");
+            glyph64List[i] = partGlyphs[1];
+        }
 
-- (void)loadGlyphs
-{
-    // Retrieve base64 glyph data
-    var glyphTokens = encodedGlyphs.split(",");
-    var glyph64List = [];
-    var glyphLimit = glyphTokens.length;
-    for (var i = 0; i < glyphLimit; i++) {
-        var partGlyphs = glyphTokens[i].split("&#39;");
-        glyph64List[i] = partGlyphs[1];
+        itemList = [];
+
+        //Prepare CPCollectionView
+        [glyphView setAutoresizingMask:CPViewWidthSizable];
+        [glyphView setMinItemSize:CGSizeMake(100, 100)];
+        [glyphView setMaxItemSize:CGSizeMake(100, 100)];
+        [glyphView setDelegate:self];
+        [glyphView setSelectable:YES];
+
+        //Set CPCollectionView to use PhotoViews
+        var itemPrototype = [[CPCollectionViewItem alloc] init];
+        [itemPrototype setView:[[PhotoView alloc] initWithFrame:CGRectMakeZero()]];
+        [glyphView setItemPrototype:itemPrototype];
+
+        //Create CPImages with the base64 data
+        for (var i = 0; i < glyph64List.length; i++)
+        {
+            var glyphImageData = [CPData dataWithBase64:glyph64List[i]];
+            var glyphImage = [[CPImage alloc] initWithData:glyphImageData];
+            itemList[i] = glyphImage;
+        }
+
+        //Add images to CPCollectionView
+        [glyphView setContent:itemList];
+
+        console.log(glyphView);
     }
-    
-    itemList = [];
-    
-    //Prepare CPCollectionView
-    [collectionController setAutoresizingMask:CPViewWidthSizable];
-    [collectionController setMinItemSize:CGSizeMake(100, 100)];
-    [collectionController setMaxItemSize:CGSizeMake(100, 100)];
-    [collectionController setDelegate:self];
-    
-    //Set CPCollectionView to use PhotoViews
-    var itemPrototype = [[CPCollectionViewItem alloc] init];
-    [itemPrototype setView:[[PhotoView alloc] initWithFrame:CGRectMakeZero()]];
-    [collectionController setItemPrototype:itemPrototype];
-    
-    //Create CPImages with the base64 data
-    for (var i = 0; i < glyph64List.length; i++) {
-        var glyphImageData = [CPData dataWithBase64:glyph64List[i]];
-        var glyphImage = [[CPImage alloc] initWithData:glyphImageData];
-        itemList[i] = glyphImage;
-    }
-    
-    //Add images to CPCollectionView
-    [collectionController setContent:itemList];
-    [collectionController setSelectable:YES];
+    return self;
 }
 
 - (CPData)collectionView:(CPCollectionView)aCollectionView dataForItemsAtIndexes:(CPIndexSet)indices forType:(CPString)aType
@@ -84,12 +82,10 @@ PhotoDragType = "PhotoDragType";
 @implementation PhotoView : CPImageView
 {
     CPImageView _imageView;
-    //BOOL _isSelected;
 }
 
 - (void)setSelected:(BOOL)isSelected
 {
-    console.log("whut");
     [self setBackgroundColor:isSelected ? [CPColor grayColor] : nil];
 }
 
